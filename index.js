@@ -17,6 +17,8 @@ async function run(){
     await client.connect();
     const database = client.db('education-website');
     const studentsDataCollection = database.collection('studentsData');
+    const teachersData = database.collection('teachers');
+    const servicesData = database.collection('services');
     // const myUserCollection = database.collection('users');
     console.log('database successfully coneted')
     //update user+add(post user)-------------------------------------upsert (google login)
@@ -26,15 +28,22 @@ async function run(){
     const studentsData = req.body;
     const result = await studentsDataCollection.insertOne(studentsData);
     res.json(result)
-    console.log(result)
   })
 
-//   //Get Metod  get all myDocs---------------------API--get all
-//   app.get('/myDocs', async(req, res)=>{
-//     const myDocs = myDocsCollection.find({});
-//     const result = await myDocs.toArray();
-//     res.json(result)
-//   })
+//   //Get Metod  get all teachers---------------------API--get all
+  app.get('/teachers', async(req, res)=>{
+    const teachers = teachersData.find({});
+    const result = await teachers.toArray();
+    res.send(result);
+   
+  })
+//   //Get Metod  get all services--------------------API--get all
+  app.get('/services', async(req, res)=>{
+    const services = servicesData.find({});
+    const result = await services.toArray();
+    res.send(result);
+   
+  })
 
 
     
