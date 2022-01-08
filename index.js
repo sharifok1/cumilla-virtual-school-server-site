@@ -29,6 +29,15 @@ async function run(){
     const result = await studentsDataCollection.insertOne(studentsData);
     res.json(result)
   })
+   //Get students Metod ---------------------API--get---students
+  app.get('/studentsData', async(req, res)=>{
+    // const section = req.params.section;
+    // const query = { section:'six'};
+    const student = studentsDataCollection.find({});
+    const result = await student.toArray();
+    res.send(result);
+   
+  })
 
 //   //Get Metod  get all teachers---------------------API--get all
   app.get('/teachers', async(req, res)=>{
