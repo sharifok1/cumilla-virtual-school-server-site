@@ -31,8 +31,7 @@ async function run(){
   })
    //Get students Metod ---------------------API--get---students
   app.get('/studentsData', async(req, res)=>{
-    // const section = req.params.section;
-    // const query = { section:'six'};
+
     const student = studentsDataCollection.find({});
     const result = await student.toArray();
     res.send(result);
